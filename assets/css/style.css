@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("/assets/images/background-hanandchewy.png");
+    background-color: #cccccc;
+   }
+
+.char {
+    width: 200px;
+    height: auto; 
+    margin: 30px; 
+}  
+

@@ -5,11 +5,69 @@
 body {
     background-image: url("/assets/images/background-hanandchewy.png");
     background-color: #cccccc;
-   }
+ }
+   
+   
+h1 {
+    text-align: center;
+    font-size: 46px;
+    font-weight: bold;
+    color: #FDC403;
+    background-color: black;
+
+}
+
+
+h3 {
+    margin: 10px;
+    color: black;
+    font-weight: bold;
+    background-color: white;
+    width: 100%;
+    font-size: 24px;
+    text-decoration: underline;
+}
 
 .char {
     width: 200px;
     height: auto; 
-    margin: 30px; 
+    margin: 20px; 
+    float: left;
 }  
+
+.image-container-char {
+    position: relative;
+    text-align: center;
+    background-color: white;
+    float: left;
+    width: 240px;
+    margin: 10px 20px;
+    border: 2px solid black;
+  }
+
+.text {
+    position: absolute;
+    z-index: 999;
+    background: white;
+    color: rgb(17, 182, 52);
+    text-align: center;
+    font-size: 24px;
+    width: 100%; 
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    bottom: 5px;
+}
+
+.name {
+    position: absolute;
+    z-index: 999;
+    background: white;
+    color: rgb(17, 182, 52);
+    text-align: center;
+    font-size: 24px;
+    width: 100%; 
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-weight: bold;
+    top: 5px;
+}
 

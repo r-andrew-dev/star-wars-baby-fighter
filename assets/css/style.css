@@ -71,3 +71,15 @@ h3 {
     top: 5px;
 }
 
+.enemies {
+    float: right;
+    text-align: right;
+    width: 25%;
+
+}
+
+.your-character {
+    position: relative;
+    top: 250px;
+}
+

@@ -1,9 +1,11 @@
-var byhp = 120;
-var behp = 100;
-var bjbhp = 150;
-var bjhp = 180;
 
+$(document).ready(function() {
 
+    var byhp = 120;
+    var behp = 100;
+    var bjbhp = 150;
+    var bjhp = 180;
+    var isRunning = false;
 
 
 function initializeGame () {
@@ -11,12 +13,33 @@ function initializeGame () {
     behp = 100;
     bjbhp = 150;
     bjhp = 180;
+    isRunning = false;
+    
+    $(".enemies, .your-character, .fight-character, .fight-stage").empty();
+    // Reset character div to show all four images 
+
+
 
 }
 
-$(document).ready(function() {
-    console.log( "ready!" );
-});
+$(".image-container-char").on("click", function () {
+
+    if (isRunning) {
+        return false;
+    }
+
+    else {
+        $("your-character").text("<h3>Your Character: </h3>");
+        console.log("testing")
+    }
+
+
+} )
+
+
+})
+
+
 
 
 // Inital screen set up, hard coded in HTML

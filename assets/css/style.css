@@ -73,14 +73,16 @@ h3 {
 
 .enemies {
     float: right;
-    text-align: right;
-    width: 25%;
+    text-align: center;
+    width: 20%;
+    background-color: red;
 
 }
 
 .your-character {
     float: left;
     background-color: rgb(17, 182, 52);
+    text-align: center;
 
 }
 

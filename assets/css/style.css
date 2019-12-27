@@ -79,7 +79,7 @@ h3 {
 }
 
 .your-character {
-    position: relative;
-    top: 250px;
+    float: left;
+    
 }
 

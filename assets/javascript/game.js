@@ -29,8 +29,10 @@ $(".image-container-char").on("click", function () {
     }
 
     else  {
-
-        $("div.your-character").append("<h3>Your Character:</h3>, <div>this</div");
+        $(this).hide();
+        $("div.your-character").append("<h3>Your Character:</h3>")
+        $(this).appendTo("div.your-character")
+        $(this).show();
         $("div.enemies").append("<h3>Enemies:</h3>");
         
     }

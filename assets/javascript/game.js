@@ -29,7 +29,7 @@ $(".image-container-char").on("click", function () {
     }
 
     else  {
-
+        isRunning = true;
         $(this).hide();
         $("div.your-character").append("<h3>Your Character:</h3>")
         $(this).appendTo("div.your-character")
@@ -40,9 +40,9 @@ $(".image-container-char").on("click", function () {
         $("div.characters").show();
 
     }
+}
 
-
-} )
+)
 
 
 })

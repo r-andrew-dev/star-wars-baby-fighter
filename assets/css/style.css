@@ -29,6 +29,28 @@ h3 {
     text-decoration: underline;
 }
 
+button {
+
+    background-color: #FDC403;
+    font-size: 26px;
+    font-weight: bold;
+    color: black;
+    padding: 2%;
+    position: absolute;
+    top: 85%;
+    right: 2%;
+    
+}
+
+.attack {
+
+    font-size: 42px;
+    position: absolute;
+    top: 70%;
+    right: 2%;
+
+}
+
 .char {
     width: 88%;
     height: auto; 

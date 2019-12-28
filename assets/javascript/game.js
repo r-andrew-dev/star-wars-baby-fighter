@@ -53,6 +53,7 @@ $(".image-container-char").on("click", function () {
         $("div.fight-character").append("<h3>Destroy them!</h3>")
         $(this).appendTo("div.fight-character")
         $("div.your-character").after("<p class=battle-flag>VS</p>")
+        $("div.enemies").after("<button class='attack'>ATTACK</button>", "<button>RESET GAME</button>");
         $(this).show()
         
         

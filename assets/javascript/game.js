@@ -23,8 +23,7 @@ function initializeGame () {
 
 
     // Returns four characters to start position.
-    $("div.characters").appendTo(".game-start");
-    $("div.characters").replaceWith(divClone.clone());
+    $(divClone.clone(true)).appendTo(".game-start");
 
 
     // clears other divs on the page to return appearance to the same as the start.
@@ -40,6 +39,10 @@ function initializeGame () {
 
 
 }
+
+$(".buttons").on("click", ".reset", function () {
+    initializeGame();
+})
 
 $(".image-container-char").on("click", function () {
 
@@ -70,12 +73,12 @@ $(".image-container-char").on("click", function () {
         $("div.fight-character").append("<h3>Destroy them!</h3>")
         $(this).appendTo("div.fight-character")
         $("div.your-character").after("<p class=battle-flag>VS</p>")
-        $("div.enemies").after("<button class='attack'>ATTACK</button>", "<button class='reset'>RESET GAME</button>");
+        $("div.buttons").append("<button class='attack'>ATTACK</button>", "<button class='reset'>RESET GAME</button>");
         $(this).show()
 
-        $("button.reset").on("click", function () {
-            initializeGame();
-        })
+        // $("button.reset").on("click", function () {
+        //     initializeGame();
+        // })
 
         
         

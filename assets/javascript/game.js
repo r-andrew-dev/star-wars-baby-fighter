@@ -6,6 +6,7 @@ $(document).ready(function() {
     var bjbhp = 150;
     var bjhp = 180;
     var isRunning = false;
+    var enemySelected = false;
 
 
 function initializeGame () {
@@ -14,6 +15,7 @@ function initializeGame () {
     bjbhp = 150;
     bjhp = 180;
     isRunning = false;
+    enemySelected = false;
     
     $(".enemies, .your-character, .fight-character, .fight-stage").empty();
     // Reset character div to show all four images 
@@ -24,26 +26,44 @@ function initializeGame () {
 
 $(".image-container-char").on("click", function () {
 
-    if (isRunning) {
+    if (isRunning && enemySelected) {
         return false;
     }
 
     else  {
+
         isRunning = true;
         $(this).hide();
         $("div.your-character").append("<h3>Your Character:</h3>")
         $(this).appendTo("div.your-character")
         $("div.characters").hide()
-        $("div.enemies").append("<h3>Enemies:</h3>");
+        $(".start-message").hide();
+        $("div.enemies").append("<h3 class='enemy-flag'>CHOOSE AN ENEMY:</h3>");
         $(".characters").appendTo("div.enemies");
         $(this).show();
         $("div.characters").show();
+        $("div.enemies div.image-container-char").addClass("image-enemies");
+    
+
+        enemySelected = true;
+        $(".image-enemies").on("click" , function () {
+
+        $(this).hide();
+        $(".enemy-flag").hide();
+        $("div.fight-character").append("<h3>Destroy them!</h3>")
+        $(this).appendTo("div.fight-character")
+        $("div.your-character").after("<p class=battle-flag>VS</p>")
+        $(this).show()
+        
+        
+         console.log(this);
+
+})
 
     }
-}
 
-)
 
+})
 
 })
 
@@ -77,11 +97,3 @@ $(".image-container-char").on("click", function () {
 // A message alerting the player they have lost should appear, and a reset game button should display. 
 
 // When reset game is selected, initializeGame function should run. 
-
-
-
-
-
-
-
-

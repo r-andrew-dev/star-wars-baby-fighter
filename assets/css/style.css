@@ -3,6 +3,7 @@
 }
 
 body {
+    z-index: -1;
     background-image: url("/assets/images/background-hanandchewy.png");
     background-color: #cccccc;
  }
@@ -19,7 +20,7 @@ h1 {
 
 
 h3 {
-    margin: 10px;
+    margin: 1%;
     color: black;
     font-weight: bold;
     background-color: white;
@@ -29,9 +30,9 @@ h3 {
 }
 
 .char {
-    width: 200px;
+    width: 88%;
     height: auto; 
-    margin: 20px; 
+    margin: 6%; 
     float: left;
 }  
 
@@ -45,6 +46,8 @@ h3 {
     border: 2px solid black;
   }
 
+
+
 .text {
     position: absolute;
     z-index: 999;
@@ -55,7 +58,7 @@ h3 {
     width: 100%; 
     font-family: Georgia, Times, "Times New Roman", serif;
     font-weight: bold;
-    bottom: 5px;
+    bottom: 3%;
 }
 
 .name {
@@ -68,14 +71,14 @@ h3 {
     width: 100%; 
     font-family: Georgia, Times, "Times New Roman", serif;
     font-weight: bold;
-    top: 5px;
+    top: 3%;
 }
 
 .enemies {
     float: right;
     text-align: center;
     width: 22%;
-    background-color: red;
+    background-color: purple;
     image
 
 }
@@ -85,6 +88,30 @@ h3 {
     float: left;
     background-color: rgb(17, 182, 52);
     text-align: center;
+
+}
+
+.fight-character {
+
+    /* margin: ; */
+    text-align: center;
+    background-color: red;
+    position: absolute;
+    bottom: 3%
+
+
+
+}
+
+.battle-flag {
+
+    float: left;
+    bottom: 50%;
+    background-color: black;
+    color: #FDC403;
+    font-size: 24px;
+    margin: 10%;
+    width: 5%;
 
 }
 

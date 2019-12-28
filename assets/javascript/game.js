@@ -7,7 +7,10 @@ $(document).ready(function() {
     var bjhp = 180;
     var isRunning = false;
     var enemySelected = false;
-    var divClone = $("div.image-container-char").clone();
+
+    // Creates a clone of the character div with all four characters to be able to 
+    // retore later. 
+    var divClone = $("div.characters").clone(true);
 
 
 function initializeGame () {
@@ -17,14 +20,22 @@ function initializeGame () {
     bjhp = 180;
     isRunning = false;
     enemySelected = false;
-    
+
+
+    // Returns four characters to start position.
+    $("div.characters").appendTo(".game-start");
+    $("div.characters").replaceWith(divClone.clone());
+
+
+    // clears other divs on the page to return appearance to the same as the start.
     $("div.enemies, div.your-character, div.fight-character, div.fight-stage").empty();
+    
+
+    // Hides buttons and VS, displays "CHOOSE CHARACTER" message.
     $("button").hide();
     $(".battle-flag").hide();
     $(".start-message").show();
-    $("div.image-container-char").replaceWith(divClone.clone());
-    console.log(divClone);
-    $("div.image-container-char").show();
+ 
 
 
 

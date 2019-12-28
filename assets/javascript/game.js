@@ -7,6 +7,7 @@ $(document).ready(function() {
     var bjhp = 180;
     var isRunning = false;
     var enemySelected = false;
+    var divClone = $("div.image-container-char").clone();
 
 
 function initializeGame () {
@@ -17,8 +18,13 @@ function initializeGame () {
     isRunning = false;
     enemySelected = false;
     
-    $(".enemies, .your-character, .fight-character, .fight-stage").empty();
-    // Reset character div to show all four images 
+    $("div.enemies, div.your-character, div.fight-character, div.fight-stage").empty();
+    $("button").hide();
+    $(".battle-flag").hide();
+    $(".start-message").show();
+    $("div.image-container-char").replaceWith(divClone.clone());
+    console.log(divClone);
+    $("div.image-container-char").show();
 
 
 
@@ -53,11 +59,15 @@ $(".image-container-char").on("click", function () {
         $("div.fight-character").append("<h3>Destroy them!</h3>")
         $(this).appendTo("div.fight-character")
         $("div.your-character").after("<p class=battle-flag>VS</p>")
-        $("div.enemies").after("<button class='attack'>ATTACK</button>", "<button>RESET GAME</button>");
+        $("div.enemies").after("<button class='attack'>ATTACK</button>", "<button class='reset'>RESET GAME</button>");
         $(this).show()
+
+        $("button.reset").on("click", function () {
+            initializeGame();
+        })
+
         
         
-         console.log(this);
 
 })
 

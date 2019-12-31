@@ -8,7 +8,7 @@ $(document).ready(function () {
     var isRunning = false;
     var enemySelected = false;
 
-    // Creates a clone of the character div with all four characters to be able to 
+    // Creates a variable to hold a clone of the character div with all four characters to be able to 
     // retore later. 
     var divClone = $("div.characters").clone(true)
 
@@ -20,8 +20,7 @@ $(document).ready(function () {
         isRunning = false;
         enemySelected = false;
 
-
-        // $("div.characters").empty();
+        // adding clone of div characters back to top of game.
         $(divClone.clone(true)).appendTo(".game-start");
 
 
@@ -37,31 +36,63 @@ $(document).ready(function () {
 
         }
 
-
+        // creating a click event for user to choose a character.
         $(".image-container-char").on("click", function (game) {
 
-            if (isRunning && enemySelected) {
+            if (isRunning) {
                 return false;
             }
 
             else {
-                divClone = $("div.characters").clone(true)
+
+                // cloning character div after click listener has been added.
+               divClone = $("div.characters").clone(true)
+             
+             
+                // setting boolean to true to prevent game from selecting multiple characters as your character.
                 isRunning = true;
+                
+                // hides the user selected character in the character div.
                 $(this).hide();
+
+                // adds words to the 'your character' div.
                 $("div.your-character").append("<h3>Your Character:</h3>")
+
+                // adds the user selected character to the your character div.
                 $(this).appendTo("div.your-character")
+
+                // hides remaining characters
                 $("div.characters").hide()
+
+                // hides choose your character
                 $(".start-message").hide();
+
+                // adds words to enemy div
                 $("div.enemies").append("<h3 class='enemy-flag'>CHOOSE AN ENEMY:</h3>");
+                
+                // adds remaining characters to enemies div
                 $(".characters").appendTo("div.enemies");
+               
+                // reveals selected character in your character div.
                 $(this).show();
+
+                // reveals remaining characters in enemies div
                 $("div.characters").show();
+
+                // adds class to characters in enemies div for use later.
                 $("div.enemies div.image-container-char").addClass("image-enemies");
 
-
-                enemySelected = true;
+              
+                // creating a click event for user to select an enemy
                 $(".image-enemies").on("click", function () {
 
+                    if (enemySelected) {
+                        return false;
+                    }
+    
+                    else {
+
+                    enemySelected = true;
                     $(this).hide();
                     $(".enemy-flag").hide();
                     $("div.fight-character").append("<h3>Destroy them!</h3>")
@@ -71,9 +102,9 @@ $(document).ready(function () {
                     $(this).show()
 
 
+                }
 
-
-                })
+            })
 
 
             }

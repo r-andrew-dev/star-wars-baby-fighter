@@ -1,5 +1,5 @@
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     var byhp = 120;
     var behp = 100;
@@ -10,87 +10,82 @@ $(document).ready(function() {
 
     // Creates a clone of the character div with all four characters to be able to 
     // retore later. 
-    var divClone = $("div.characters").clone(true);
+    var divClone = $("div.characters").clone(true)
+
+    function initializeGame() {
+        byhp = 120;
+        behp = 100;
+        bjbhp = 150;
+        bjhp = 180;
+        isRunning = false;
+        enemySelected = false;
 
 
-function initializeGame () {
-    byhp = 120;
-    behp = 100;
-    bjbhp = 150;
-    bjhp = 180;
-    isRunning = false;
-    enemySelected = false;
+        // $("div.characters").empty();
+        $(divClone.clone(true)).appendTo(".game-start");
 
 
-    // Returns four characters to start position.
-    $(divClone.clone(true)).appendTo(".game-start");
+        // clears other divs on the page to return appearance to the same as the start.
+        $("div.enemies, div.your-character, div.fight-character, div.fight-stage").empty();
 
 
-    // clears other divs on the page to return appearance to the same as the start.
-    $("div.enemies, div.your-character, div.fight-character, div.fight-stage").empty();
-    
-
-    // Hides buttons and VS, displays "CHOOSE CHARACTER" message.
-    $("button").hide();
-    $(".battle-flag").hide();
-    $(".start-message").show();
- 
+        // Hides buttons and VS, displays "CHOOSE CHARACTER" message.
+        $("button").hide();
+        $(".battle-flag").hide();
+        $(".start-message").show();
 
 
-
-}
-
-$(".buttons").on("click", ".reset", function () {
-    initializeGame();
-})
-
-$(".image-container-char").on("click", function () {
-
-    if (isRunning && enemySelected) {
-        return false;
-    }
-
-    else  {
-
-        isRunning = true;
-        $(this).hide();
-        $("div.your-character").append("<h3>Your Character:</h3>")
-        $(this).appendTo("div.your-character")
-        $("div.characters").hide()
-        $(".start-message").hide();
-        $("div.enemies").append("<h3 class='enemy-flag'>CHOOSE AN ENEMY:</h3>");
-        $(".characters").appendTo("div.enemies");
-        $(this).show();
-        $("div.characters").show();
-        $("div.enemies div.image-container-char").addClass("image-enemies");
-    
-
-        enemySelected = true;
-        $(".image-enemies").on("click" , function () {
-
-        $(this).hide();
-        $(".enemy-flag").hide();
-        $("div.fight-character").append("<h3>Destroy them!</h3>")
-        $(this).appendTo("div.fight-character")
-        $("div.your-character").after("<p class=battle-flag>VS</p>")
-        $("div.buttons").append("<button class='attack'>ATTACK</button>", "<button class='reset'>RESET GAME</button>");
-        $(this).show()
-
-        // $("button.reset").on("click", function () {
-        //     initializeGame();
-        // })
-
-        
-        
-
-})
-
-    }
+        }
 
 
-})
+        $(".image-container-char").on("click", function (game) {
 
-})
+            if (isRunning && enemySelected) {
+                return false;
+            }
+
+            else {
+                divClone = $("div.characters").clone(true)
+                isRunning = true;
+                $(this).hide();
+                $("div.your-character").append("<h3>Your Character:</h3>")
+                $(this).appendTo("div.your-character")
+                $("div.characters").hide()
+                $(".start-message").hide();
+                $("div.enemies").append("<h3 class='enemy-flag'>CHOOSE AN ENEMY:</h3>");
+                $(".characters").appendTo("div.enemies");
+                $(this).show();
+                $("div.characters").show();
+                $("div.enemies div.image-container-char").addClass("image-enemies");
+
+
+                enemySelected = true;
+                $(".image-enemies").on("click", function () {
+
+                    $(this).hide();
+                    $(".enemy-flag").hide();
+                    $("div.fight-character").append("<h3>Destroy them!</h3>")
+                    $(this).appendTo("div.fight-character")
+                    $("div.your-character").after("<p class=battle-flag>VS</p>")
+                    $("div.buttons").append("<button class='attack'>ATTACK</button>", "<button class='reset'>RESET GAME</button>");
+                    $(this).show()
+
+
+
+
+                })
+
+
+            }
+
+        })
+
+    $(".buttons").on("click", ".reset", function () {
+        initializeGame();
+        game();
+     })
+
+    })
 
 
 

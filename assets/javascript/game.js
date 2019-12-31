@@ -147,15 +147,21 @@ $(document).ready(function () {
 
                         else {
 
+                        // Gets the starting HP value for player and enemy, turns to integers, stores as variables.
                          var playerHP = parseInt( $("div.your-character div.image-container-char div.hp-text span.hp").text());
                          var computerHP = parseInt( $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
 
+                        
+                         var attackPower = computerHP /10 + 5
+                        
 
                          console.log(playerHP);
                          console.log(playerHP + 12);
 
                          console.log(computerHP)
                          console.log(computerHP + 12);
+
+                         console.log(attackPower);
 
                         }
                 

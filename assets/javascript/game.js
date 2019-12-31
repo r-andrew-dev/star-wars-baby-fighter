@@ -1,6 +1,27 @@
+// Inital screen set up, hard coded in HTML
+
+// Part One.
+// When ANY character is chosen, other characters move to the ENEMIES stage and their background turn red.
+// The CHOOSE AN ENEMY stage flag is dynamically created when ANY character is chosen. 
+// Whichever character is chosen moves down and is labeled "your character"
+// The above three lines should happen inside the character click event. 
+
+// Part two.
+// Once an enemy is clicked, the enemy moves down into the staging area and the 
+// other enemies backgrounds turn back to white.
+// The attack button is dynamically created. 
+
+
+
+
+
+
 
 $(document).ready(function () {
 
+    var HP
+    var attack
+    var CounterAttack 
     var byhp = 120;
     var behp = 100;
     var bjbhp = 150;
@@ -37,7 +58,7 @@ $(document).ready(function () {
         }
 
         // creating a click event for user to choose a character.
-        $(".image-container-char").on("click", function (game) {
+        $(".image-container-char").on("click", function () {
 
             if (isRunning) {
                 return false;
@@ -92,14 +113,53 @@ $(document).ready(function () {
     
                     else {
 
+                    // setting boolean to true to ensure only one enemy can be chosen.
                     enemySelected = true;
+                
+                    // hiding selected enemy in enemies div
                     $(this).hide();
+
+                    // hiding choose enemy message
                     $(".enemy-flag").hide();
+
+                    // adding words to fight character div
                     $("div.fight-character").append("<h3>Destroy them!</h3>")
+
+                    // adding chosen enemy to fight character div
                     $(this).appendTo("div.fight-character")
+
+                    // adding VS battle flag
                     $("div.your-character").after("<p class=battle-flag>VS</p>")
+
+                    // adding attack and reset buttons to buttons div.
                     $("div.buttons").append("<button class='attack'>ATTACK</button>", "<button class='reset'>RESET GAME</button>");
+                    
+                    // showing chosen enemy in fight character div.
                     $(this).show()
+
+                    $(".buttons").on("click", ".attack", function () {
+
+                        if (enemySelected === false) {
+
+                        $("div.battle-text").append("<p>Please select a new enemy to continue.</p>")
+
+                        }
+
+                        else {
+
+                         var playerHP = parseInt( $("div.your-character div.image-container-char div.hp-text span.hp").text());
+                         var computerHP = parseInt( $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
+
+
+                         console.log(playerHP);
+                         console.log(playerHP + 12);
+
+                         console.log(computerHP)
+                         console.log(computerHP + 12);
+
+                        }
+                
+                    })
 
 
                 }
@@ -111,28 +171,28 @@ $(document).ready(function () {
 
         })
 
+    // setting up a click event for the attack button. 
+
+    // $(".buttons").on("click", ".attack", function () {
+
+    //     $("battle-text").css('visibility','visible');
+
+    // })
+
+        // if (enemySelected) {
+
+
+        // }
+
+    // setting up a click event for the reset button.
     $(".buttons").on("click", ".reset", function () {
+    
+    // calling the reset function, sets all variables and elements back to starting positions. 
         initializeGame();
-        game();
      })
 
     })
 
-
-
-
-// Inital screen set up, hard coded in HTML
-
-// Part One.
-// When ANY character is chosen, other characters move to the ENEMIES stage and their background turn red.
-// The CHOOSE AN ENEMY stage flag is dynamically created when ANY character is chosen. 
-// Whichever character is chosen moves down and is labeled "your character"
-// The above three lines should happen inside the character click event. 
-
-// Part two.
-// Once an enemy is clicked, the enemy moves down into the staging area and the 
-// other enemies backgrounds turn back to white.
-// The attack button is dynamically created. 
 
 
 // Part three.

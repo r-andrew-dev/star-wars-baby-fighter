@@ -70,7 +70,7 @@ button {
 
 
 
-.text {
+.hp-text {
     position: absolute;
     z-index: 999;
     background: white;
@@ -135,6 +135,25 @@ button {
     width: 5%;
     text-align: center;
     padding: 1%;
+
+}
+
+
+
+.battle-text {
+
+    position: relative;
+    top: 300px;
+    width: 50%;
+    height: auto;
+    left: 200px;
+    background-color: black;
+    color: #FDC403;
+    font-size: 24px;
+
+
+}
+
 
 }
 

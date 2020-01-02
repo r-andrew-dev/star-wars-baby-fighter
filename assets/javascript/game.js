@@ -12,16 +12,12 @@
 // The attack button is dynamically created. 
 
 
-
-
-
-
-
 $(document).ready(function () {
 
     var HP
+    var attackPower
     var attack
-    var CounterAttack 
+    var counterAttack 
     var byhp = 120;
     var behp = 100;
     var bjbhp = 150;
@@ -46,7 +42,7 @@ $(document).ready(function () {
 
 
         // clears other divs on the page to return appearance to the same as the start.
-        $("div.enemies, div.your-character, div.fight-character, div.fight-stage").empty();
+        $("div.enemies, div.your-character, div.fight-character, div.fight-stage, div.battle-text").empty();
 
 
         // Hides buttons and VS, displays "CHOOSE CHARACTER" message.
@@ -152,7 +148,8 @@ $(document).ready(function () {
                          var computerHP = parseInt( $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
 
                         
-                         var attackPower = computerHP /10 + 5
+                         attackPower = 12
+                         counterAttack = 9
                         
 
                          console.log(playerHP);
@@ -162,6 +159,22 @@ $(document).ready(function () {
                          console.log(computerHP + 12);
 
                          console.log(attackPower);
+
+                            
+                        player = $("div.your-character div.image-container-char div.name").text();
+
+                        opponent = $("div.fight-character div.image-container-char.image-enemies div.name").text();
+                      
+                        console.log(player);
+                        console.log(opponent);
+                        
+                      
+                      
+
+                        $("div.battle-text").append('You attacked ' + opponent + ' for ' + attackPower + ' damage. ' + opponent + ' attacked you back for ' + counterAttack + ' damage.');   
+
+
+
 
                         }
                 

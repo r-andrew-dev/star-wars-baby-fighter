@@ -171,7 +171,7 @@ $(document).ready(function () {
                       
                       
 
-                        $("div.battle-text").append('You attacked ' + opponent + ' for ' + attackPower + ' damage. ' + opponent + ' attacked you back for ' + counterAttack + ' damage.');   
+                        $("div.battle-text").text('You attacked ' + opponent + ' for ' + attackPower + ' damage. ' + opponent + ' attacked you back for ' + counterAttack + ' damage.');   
 
 
 

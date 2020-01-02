@@ -18,6 +18,7 @@ $(document).ready(function () {
     var attackPower
     var attack
     var counterAttack 
+    var computerHP
     var byhp = 120;
     var behp = 100;
     var bjbhp = 150;
@@ -141,39 +142,28 @@ $(document).ready(function () {
 
                         }
 
+
                         else {
 
+                            var playerHP = parseInt( $("div.your-character div.image-container-char div.hp-text span.hp").text());
+                            var computerHP = parseInt( $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
+                            var counterAttack = 1 / 10 * computerHP
+
                         // Gets the starting HP value for player and enemy, turns to integers, stores as variables.
-                         var playerHP = parseInt( $("div.your-character div.image-container-char div.hp-text span.hp").text());
-                         var computerHP = parseInt( $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
-
-                        
-                         attackPower = 12
-                         counterAttack = 9
-                        
-
-                         console.log(playerHP);
-                         console.log(playerHP + 12);
-
-                         console.log(computerHP)
-                         console.log(computerHP + 12);
-
-                         console.log(attackPower);
+                        //  var playerHP = parseInt( $("div.your-character div.image-container-char div.hp-text span.hp").text());
+                        //  var computerHP = parseInt( $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
+                      
+                        attackPower = 12
 
                             
-                        player = $("div.your-character div.image-container-char div.name").text();
+                         player = $("div.your-character div.image-container-char div.name").text();
 
-                        opponent = $("div.fight-character div.image-container-char.image-enemies div.name").text();
-                      
-                        console.log(player);
-                        console.log(opponent);
-                        
-                      
+                         opponent = $("div.fight-character div.image-container-char.image-enemies div.name").text();
                       
 
-                        $("div.battle-text").text('You attacked ' + opponent + ' for ' + attackPower + ' damage. ' + opponent + ' attacked you back for ' + counterAttack + ' damage.');   
-                        $("div.your-character div.image-container-char div.hp-text span.hp").text(playerHP - counterAttack);
-
+                         $("div.battle-text").text('You attacked ' + opponent + ' for ' + attackPower + ' damage. ' + opponent + ' attacked you back for ' + counterAttack + ' damage.');   
+                         $("div.your-character div.image-container-char div.hp-text span.hp").text(playerHP - counterAttack);
+                         $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(computerHP - attackPower);        
 
 
                         }

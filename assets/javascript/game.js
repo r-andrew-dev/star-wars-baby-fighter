@@ -172,7 +172,7 @@ $(document).ready(function () {
                       
 
                         $("div.battle-text").text('You attacked ' + opponent + ' for ' + attackPower + ' damage. ' + opponent + ' attacked you back for ' + counterAttack + ' damage.');   
-
+                        $("div.your-character div.image-container-char div.hp-text span.hp").text(playerHP - counterAttack);
 
 
 

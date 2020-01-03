@@ -14,6 +14,8 @@
 
 $(document).ready(function () {
 
+    var n = 1
+    var playerAttack;
     var isRunning = false;
     var enemySelected = false;
     var characters = { 
@@ -30,6 +32,7 @@ $(document).ready(function () {
     var divClone = $("div.characters").clone(true)
 
     function initializeGame() {
+        var n = 1
         isRunning = false;
         enemySelected = false;
 
@@ -149,6 +152,8 @@ $(document).ready(function () {
                         //  Using the index that matches the index of the name of player, pulls the attabkBase for Player character.
                          playerAttackBase = characters.attackBase[playerIndex];
                          
+                         playerAttack = playerAttackBase * n;
+                         
                          // Pulls the name of enemy the user has chosen. 
                          opponent = $("div.fight-character div.image-container-char.image-enemies div.name").text();
 
@@ -160,9 +165,14 @@ $(document).ready(function () {
                         //  Per directions, this number does not change based on turn, only character.
                          opponentAttack = characters.counterAttack[opponentIndex];
 
-                         $("div.battle-text").text('You attacked ' + opponent + ' for ' + playerAttackBase + ' damage. ' + opponent + ' attacked you back for ' + opponentAttack + ' damage.');   
+                         $("div.battle-text").text('You attacked ' + opponent + ' for ' + playerAttack + ' damage. ' + opponent + ' attacked you back for ' + opponentAttack + ' damage.');   
                          $("div.your-character div.image-container-char div.hp-text span.hp").text(userHP - opponentAttack);
-                         $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(computerHP - playerAttackBase);        
+                         $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(computerHP - playerAttack);        
+
+                         n++;  
+
+
+                          console.log(n);
 
                         }
                         

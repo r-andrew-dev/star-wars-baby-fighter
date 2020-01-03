@@ -14,23 +14,23 @@
 
 $(document).ready(function () {
 
+    // variable n to be used as a counter to grind attack power each turn. 
     var n = 1
-    var playerAttack;
+
+    // setting up game state variables to ensure only one character and enemy is chosen to a time. 
     var isRunning = false;
     var enemySelected = false;
+
+    // creating an object to hold all character information to be utilized later, key here is index value.
     var characters = { 
             names: ["Baby Yoda", "Baby Jabba", "Baby Ewok", "Baby Jedi"],
             hp: [100, 120, 150, 180], 
             counterAttack: [5, 15, 20, 25],
             attackBase: [10, 8, 6, 3],
     }
+ 
 
-    console.log(characters[1[1]])
-
-    // Creates a variable to hold a clone of the character div with all four characters to be able to 
-    // retore later. 
-    var divClone = $("div.characters").clone(true)
-
+    // a function to set everything back to start, will be called later at click of reset game button.
     function initializeGame() {
         var n = 1
         isRunning = false;
@@ -132,6 +132,8 @@ $(document).ready(function () {
                     // showing chosen enemy in fight character div.
                     $(this).show()
 
+                    $("div.battle-text").empty();
+
                     $(".buttons").on("click", ".attack", function () {
 
                         // Gets the starting HP value for player and enemy, turns to integers, stores as variables.
@@ -165,14 +167,14 @@ $(document).ready(function () {
                         //  Per directions, this number does not change based on turn, only character.
                          opponentAttack = characters.counterAttack[opponentIndex];
 
+                        //  updating the battle-text message and HP values for both player and opponent.
                          $("div.battle-text").text('You attacked ' + opponent + ' for ' + playerAttack + ' damage. ' + opponent + ' attacked you back for ' + opponentAttack + ' damage.');   
                          $("div.your-character div.image-container-char div.hp-text span.hp").text(userHP - opponentAttack);
                          $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(computerHP - playerAttack);        
 
+                       
+                       // adding one to n each time attack is clicked. (Allowing attackPower to 'grind')
                          n++;  
-
-
-                          console.log(n);
 
                         }
                         
@@ -185,8 +187,8 @@ $(document).ready(function () {
 
                         else if  (userHP > 0 && computerHP <=0) {
                             enemySelected = false;
-                            $("div.fight-character div.image-container-cha.image-enemies").hide();
-                            $("div.battle-text").text('Excellent! You have defeated ' + opponent + ". Please select a new enemy to continue.</p>")
+                            $("div.fight-character").empty();
+                            $("div.battle-text").text('Excellent! You have defeated ' + opponent + ". Please select a new enemy to continue.")
                             $(".enemy-flag").show();
 
                         }

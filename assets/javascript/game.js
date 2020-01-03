@@ -15,6 +15,9 @@ $(document).ready(function () {
         attackBase: [15, 12, 8, 4],
     }
 
+    var userHP;
+    var computerHP;
+
 
     // a function to set everything back to start, will be called later at click of reset game button.
     function initializeGame() {
@@ -134,7 +137,7 @@ $(document).ready(function () {
                         }
 
 
-                        else if (userHP > 0 && computerHP > 0) {
+                        else {
                             // Pulls the name of the character the user has chosen. 
                             player = $("div.your-character div.image-container-char div.name").text();
 
@@ -167,45 +170,60 @@ $(document).ready(function () {
                             // adding one to n each time attack is clicked. (Allowing attackPower to 'grind')
                             n++;
 
-                        }
+                            function checkHP() {
 
-                        else if (userHP <= 0 && computerHP > 0) {
+                                userHP = parseInt($("div.your-character div.image-container-char div.hp-text span.hp").text());
+                                computerHP = parseInt($("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
 
-                            $("div.your-character div.image-container-character").hide();
-                            $("div.battle-text").text('OH NO! You have been defeated. Reset Game to try again.');
-
-                        }
-
-                        else  {
-
-                            if ($('div.enemies').html() == '') {
-
-                                $("div.battle-text").text('CONGRATULATIONS!!!! YOU WIN!! Reset and try again with another character.')
-
+                                if (userHP <= 0) {
+                        
+                                    console.log(userHP);
+                                    $("div.your-character div.image-container-character").hide();
+                                    $("div.battle-text").text('OH NO! You have been defeated. Reset Game to try again.');
+                                }
+                        
+                                else if (computerHP <= 0) {
+                        
+                                    if ($('div.enemies').html() == '') {
+                        
+                                        console.log(computerHP, userHP)
+                        
+                                        $("div.battle-text").text('CONGRATULATIONS!!!! YOU WIN!! Reset and try again with another character.')
+                        
+                                    }
+                        
+                        
+                                    else {
+                        
+                                        console.log(computerHP, userHP);
+                                        enemySelected = false;
+                                        $("div.fight-character").empty();
+                                        $("div.battle-text").text('Excellent! You have defeated ' + opponent + ". Please select a new enemy to continue.")
+                                        $(".enemy-flag").show();
+                                    }
+                        
+                                }
+                        
+                        
+                                else {
+                        
+                                    console.log("THIS IS RUNNING BUT NOT WORKING RIGHT")
+                                    console.log(userHP, computerHP);
+                        
+                                }
+                        
                             }
 
+                            setTimeout(checkHP, 1500); 
 
-                            else {
-
-                                
-                                enemySelected = false;
-                                $("div.fight-character").empty();
-                                $("div.battle-text").text('Excellent! You have defeated ' + opponent + ". Please select a new enemy to continue.")
-                                $(".enemy-flag").show();
-                            }
 
                         }
 
-
-                        })
-
-                    }
-
+                    })
 
                 }
 
-            )
-
+            })
 
         }
 

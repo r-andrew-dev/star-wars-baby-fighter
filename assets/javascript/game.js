@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     // variable n to be used as a counter to grind attack power each turn. 
     var n = 1
-
     // setting up game state variables to ensure only one character and enemy is chosen to a time. 
     var isRunning = false;
     var enemySelected = false;
@@ -21,8 +20,7 @@ $(document).ready(function () {
 
     // a function to set everything back to start, will be called later at click of reset game button.
     function initializeGame() {
-   
-        n = 1
+        n = 1;
         isRunning = false;
         enemySelected = false;
 
@@ -128,114 +126,110 @@ $(document).ready(function () {
 
             })
 
-            $(".buttons").on("click", ".attack", function () {
+        }
 
-                console.log("click");
+    })
+
+    $(".buttons").on("click", ".attack", function () {
+       
+        if (enemySelected === false) {
 
 
-                if (enemySelected === false) {
+        }
 
-                    $("div.battle-text").text("Please select an enemy to continue.");
 
+        else {
+
+            // Gets the starting HP value for player and enemy, turns to integers, stores as variables.
+            userHP = parseInt($("div.your-character div.image-container-char div.hp-text span.hp").text());
+            computerHP = parseInt($("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
+
+            // Pulls the name of the character the user has chosen. 
+            player = $("div.your-character div.image-container-char div.name").text();
+
+            //  Pulls the index from the names array that matches the name of player.
+            playerIndex = characters.names.indexOf(player);
+            //  Using the index that matches the index of the name of player, pulls the HP for player character.
+            playerHP = characters.hp[playerIndex];
+            //  Using the index that matches the index of the name of player, pulls the attabkBase for Player character.
+            playerAttackBase = characters.attackBase[playerIndex];
+
+            playerAttack = playerAttackBase * n;
+
+            // Pulls the name of enemy the user has chosen. 
+            opponent = $("div.fight-character div.image-container-char.image-enemies div.name").text();
+
+            //  Pulls the index from the names array that matches the name of the enemy.
+            opponentIndex = characters.names.indexOf(opponent);
+            //  Using the index that matches the index of the name of the enemy, pulls the HP for enemy.
+            opponentHP = characters.hp[opponentIndex];
+            //  Using the index that matches the index of the name of enemy, pulls the attack for enemy character. 
+            //  Per directions, this number does not change based on turn, only character.
+            opponentAttack = characters.counterAttack[opponentIndex];
+
+            // adding one to n each time attack is clicked. (Allowing attackPower to 'grind')
+
+            remainUserHp = userHP - opponentAttack;
+            remainComHp = computerHP - playerAttack;
+
+            function checkHP() {
+
+                 if (remainComHp <= 0) {
+
+                    if ($('div.enemies div.image-container-char.image-enemies').text() == '') {
+
+
+                        enemySelected = false;
+                        $("div.battle-text").text('CONGRATULATIONS!!!! YOU WIN!! Reset and try again with another character.')
+                        $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
+
+                    }
+
+
+                    else {
+
+
+                        enemySelected = false;
+                        $("div.fight-character").empty();
+                        $("div.battle-text").text('Excellent! You have defeated ' + opponent + ". Please select a new enemy to continue.")
+                        $(".enemy-flag").show();
+                        $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
+                    }
+
+                }
+
+                else if (remainUserHp <= 0) {
+
+                    enemySelected = false;
+                    $("div.your-character div.image-container-char div.hp-text span.hp").text(remainUserHp);
+                    $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
+                    $("div.battle-text").text('OH NO! You have been defeated. Reset Game to try again.');
                 }
 
 
                 else {
 
-                 // Gets the starting HP value for player and enemy, turns to integers, stores as variables.
-                userHP = parseInt($("div.your-character div.image-container-char div.hp-text span.hp").text());
-                computerHP = parseInt($("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
-
-                    // Pulls the name of the character the user has chosen. 
-                    player = $("div.your-character div.image-container-char div.name").text();
-
-                    //  Pulls the index from the names array that matches the name of player.
-                    playerIndex = characters.names.indexOf(player);
-                    //  Using the index that matches the index of the name of player, pulls the HP for player character.
-                    playerHP = characters.hp[playerIndex];
-                    //  Using the index that matches the index of the name of player, pulls the attabkBase for Player character.
-                    playerAttackBase = characters.attackBase[playerIndex];
-
-                    playerAttack = playerAttackBase * n;
-
-                    // Pulls the name of enemy the user has chosen. 
-                    opponent = $("div.fight-character div.image-container-char.image-enemies div.name").text();
-
-                    //  Pulls the index from the names array that matches the name of the enemy.
-                    opponentIndex = characters.names.indexOf(opponent);
-                    //  Using the index that matches the index of the name of the enemy, pulls the HP for enemy.
-                    opponentHP = characters.hp[opponentIndex];
-                    //  Using the index that matches the index of the name of enemy, pulls the attack for enemy character. 
-                    //  Per directions, this number does not change based on turn, only character.
-                    opponentAttack = characters.counterAttack[opponentIndex];
-
-                    // adding one to n each time attack is clicked. (Allowing attackPower to 'grind')
-                    n++;
-
-                    remainUserHp = userHP - opponentAttack;
-                    remainComHp = computerHP - playerAttack;
-
-                    function checkHP() {
-
-                        if (remainUserHp <= 0) {
-
-        
-                            $("div.your-character div.image-container-char div.hp-text span.hp").text(remainUserHp);
-                            $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
-                            $("div.battle-text").text('OH NO! You have been defeated. Reset Game to try again.');
-                        }
-
-                        else if (remainComHp <= 0) {
-
-                            if ($('div.enemies div.image-container-char.image-enemies').text() == '') {
-
-             
-
-                                $("div.battle-text").text('CONGRATULATIONS!!!! YOU WIN!! Reset and try again with another character.')
-                                $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
-                            }
-
-
-                            else {
-
-        
-                                enemySelected = false;
-                                $("div.fight-character").empty();
-                                $("div.battle-text").text('Excellent! You have defeated ' + opponent + ". Please select a new enemy to continue.")
-                                $(".enemy-flag").show();
-                                $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
-                            }
-
-                        }
-
-
-                        else {
-
-                            $("div.battle-text").text('You attacked ' + opponent + ' for ' + playerAttack + ' damage. ' + opponent + ' attacked you back for ' + opponentAttack + ' damage.');
-                            $("div.your-character div.image-container-char div.hp-text span.hp").text(remainUserHp);
-                            $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);  
-
-                        }
-
-                    }
-
-                    setTimeout(checkHP, 500);
-
+                    $("div.battle-text").text('You attacked ' + opponent + ' for ' + playerAttack + ' damage. ' + opponent + ' attacked you back for ' + opponentAttack + ' damage.');
+                    $("div.your-character div.image-container-char div.hp-text span.hp").text(remainUserHp);
+                    $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
 
                 }
 
-            })
+            }
 
-}
+            setTimeout(checkHP, 500);
+            n++;
+
+        }
 
     })
 
-// setting up a click event for the reset button.
-$(".buttons").on("click", ".reset", function () {
+    // setting up a click event for the reset button.
+    $(".buttons").on("click", ".reset", function () {
 
-    // calling the reset function, sets all variables and elements back to starting positions. 
-    initializeGame();
-})
+        // calling the reset function, sets all variables and elements back to starting positions. 
+        initializeGame();
+    })
 
 })
 

@@ -12,7 +12,7 @@ $(document).ready(function () {
         names: ["Baby Yoda", "Baby Jabba", "Baby Ewok", "Baby Jedi"],
         hp: [100, 120, 150, 180],
         counterAttack: [5, 8, 20, 25],
-        attackBase: [15, 12, 8, 4],
+        attackBase: [18, 8, 4, 2],
     }
 
     var userHP;
@@ -123,12 +123,13 @@ $(document).ready(function () {
 
                     $("div.battle-text").empty();
 
-                    $(".buttons").on("click", ".attack", function () {
+                    $(".buttons").off().on("click", ".attack", function () {
 
+                        console.log("click")
 
                         // Gets the starting HP value for player and enemy, turns to integers, stores as variables.
-                        var userHP = parseInt($("div.your-character div.image-container-char div.hp-text span.hp").text());
-                        var computerHP = parseInt($("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
+                       userHP = parseInt($("div.your-character div.image-container-char div.hp-text span.hp").text());
+                       computerHP = parseInt($("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text());
 
                         if (enemySelected === false) {
 
@@ -165,7 +166,11 @@ $(document).ready(function () {
                             $("div.battle-text").text('You attacked ' + opponent + ' for ' + playerAttack + ' damage. ' + opponent + ' attacked you back for ' + opponentAttack + ' damage.');
                             $("div.your-character div.image-container-char div.hp-text span.hp").text(userHP - opponentAttack);
                             $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(computerHP - playerAttack);
-
+                        
+                            console.log(computerHP)
+                            console.log(playerAttack)
+                            console.log(computerHP - playerAttack)
+                        
 
                             // adding one to n each time attack is clicked. (Allowing attackPower to 'grind')
                             n++;
@@ -214,7 +219,7 @@ $(document).ready(function () {
                         
                             }
 
-                            setTimeout(checkHP, 1500); 
+                            setTimeout(checkHP, 2500); 
 
 
                         }

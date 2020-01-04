@@ -180,7 +180,7 @@ $(document).ready(function () {
 
 
                         enemySelected = false;
-                        $("div.battle-text").text('CONGRATULATIONS!!!! YOU WIN!! Reset and try again with another character.')
+                        $("div.battle-text").text('THE FORCE IS STRONG WITH THIS ONE! Reset and try again with another character?')
                         $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
 
                     }
@@ -191,7 +191,7 @@ $(document).ready(function () {
 
                         enemySelected = false;
                         $("div.fight-character").empty();
-                        $("div.battle-text").text('Excellent! You have defeated ' + opponent + ". Please select a new enemy to continue.")
+                        $("div.battle-text").text('The Force grows inside you. You have defeated ' + opponent + ". Please select a new enemy to continue.")
                         $(".enemy-flag").show();
                         $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
                     }
@@ -203,7 +203,7 @@ $(document).ready(function () {
                     enemySelected = false;
                     $("div.your-character div.image-container-char div.hp-text span.hp").text(remainUserHp);
                     $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
-                    $("div.battle-text").text('OH NO! You have been defeated. Reset Game to try again.');
+                    $("div.battle-text").text(opponent + ' has defeated you. Reset Game to try again.');
                 }
 
 

@@ -191,7 +191,7 @@ $(document).ready(function () {
 
                         enemySelected = false;
                         $("div.fight-character").empty();
-                        $("div.battle-text").text("You have defeated" + opponent + ". The Force grows inside you. Please select a new enemy to continue.");
+                        $("div.battle-text").text("You have defeated " + opponent + ". The Force grows inside you. Please select a new enemy to continue.");
                         $(".enemy-flag").show();
                         $("div.fight-character div.image-container-char.image-enemies div.hp-text span.hp").text(remainComHp);
                     }

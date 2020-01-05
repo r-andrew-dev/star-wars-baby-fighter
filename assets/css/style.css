@@ -4,7 +4,8 @@
 
 body {
     z-index: -1;
-    background-image: url("/assets/images/background-hanandchewy.png");
+    background-color: #cccccc;
+    background-image: url("../images/background-hanandchewy.png");
     background-color: #cccccc;
  }
    
@@ -101,7 +102,6 @@ button {
     text-align: center;
     width: 22%;
     background-color: purple;
-    image
 
 }
 
@@ -118,9 +118,7 @@ button {
     text-align: center;
     background-color: red;
     position: absolute;
-    bottom: 3%
-
-
+    bottom: 3%;
 
 }
 
@@ -150,9 +148,6 @@ button {
     background-color: black;
     color: #FDC403;
     font-size: 24px;
-
-
-}
 
 
 }
